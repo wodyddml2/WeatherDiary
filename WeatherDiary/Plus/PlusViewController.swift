@@ -21,6 +21,7 @@ class PlusViewController: UIViewController {
     @IBOutlet weak var diarySaveButton: UIButton!
     
     var weatherInfo: WeatherInfo?
+    var index = UserDefaults.standard.integer(forKey: "index")
     
     let picker = UIImagePickerController()
     
@@ -99,6 +100,15 @@ class PlusViewController: UIViewController {
     @objc func leftButtonClicked() {
         dismiss(animated: true)
     }
+    
+    @IBAction func saveButtonClicked(_ sender: UIButton) {
+       
+//        UserDefaults.standard.set(weatherInfo, forKey: "weather\(index)")
+//        UserDefaults.standard.set(diaryTextView.text, forKey: "text\(index)")
+        UserDefaults.standard.set(index + 1, forKey: "index")
+        dismiss(animated: true)
+    }
+    
 
 }
 

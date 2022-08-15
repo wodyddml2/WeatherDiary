@@ -18,10 +18,12 @@ class ViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     var weatherInfo: WeatherInfo?
-   
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+        
         diaryCollectionView.delegate = self
         diaryCollectionView.dataSource = self
         
@@ -36,6 +38,11 @@ class ViewController: UIViewController {
         currentTimeLabel.text = formatter.string(from: Date())
         
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(currentTimeAction), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        diaryCollectionView.reloadData()
     }
     
     @objc func currentTimeAction() {
@@ -84,7 +91,8 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        
+        return UserDefaults.standard.integer(forKey: "index") + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
