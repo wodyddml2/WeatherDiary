@@ -1,4 +1,5 @@
 import UIKit
+import CoreLocation
 
 import Kingfisher
 
@@ -14,11 +15,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var locationReloadButton: UIButton!
     
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
         diaryCollectionView.delegate = self
         diaryCollectionView.dataSource = self
+        
+        locationManager.delegate = self
         
         setupUI()
         
@@ -84,6 +89,70 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
  
+}
+
+
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let coordinate = locations.last?.coordinate {
+            
+        }
+        locationManager.stopUpdatingLocation()
+    }
+    // iOS 14이상
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkUserDeviceLocationAuthorization()
+    }
+    // 이하
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+    }
+}
+
+extension ViewController {
+    func showRequestLocationServiceAlert() {
+        let requestLocationServiceAlert = UIAlertController(title: "위치정보 이용", message: "위치 서비스를 사용할 수 없습니다. 기기의 '설정>개인정보 보호'에서 위치 서비스를 켜주세요.", preferredStyle: .alert)
+        let goSetting = UIAlertAction(title: "설정으로 이동", style: .destructive) { _ in
+          
+            if let appSetting = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSetting)
+            }
+        }
+        let cancel = UIAlertAction(title: "취소", style: .default)
+        requestLocationServiceAlert.addAction(cancel)
+        requestLocationServiceAlert.addAction(goSetting)
+        
+        present(requestLocationServiceAlert, animated: true, completion: nil)
+      }
+    
+    func checkUserDeviceLocationAuthorization() {
+        let authorization: CLAuthorizationStatus
+        
+        if #available(iOS 14.0, *) {
+            authorization = locationManager.authorizationStatus
+        } else {
+            authorization = CLLocationManager.authorizationStatus()
+        }
+        
+        if CLLocationManager.locationServicesEnabled() {
+            checkUserCurrnetLoactionAuthorization(authorization)
+        } else {
+            print("위치 설정 켜주세요")
+        }
+    }
+    
+    func checkUserCurrnetLoactionAuthorization(_ authorization: CLAuthorizationStatus) {
+        switch authorization {
+        case .notDetermined:
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            showRequestLocationServiceAlert()
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        default: print("default")
+        }
+    }
 }
 
 @available (iOS 15.0, *)
