@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
+    var weatherInfo: WeatherInfo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -93,8 +95,13 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.setupUI()
             return cell
         }
-  
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        if indexPath.item == 0 {
+//
+//        }
+//    }
  
 }
 
@@ -102,7 +109,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coordinate = locations.last?.coordinate {
-            
+            RequestAPIManager.shared.requestOpenWeather(coordinate.latitude, coordinate.longitude) { weather in
+                self.weatherInfo = weather
+                DispatchQueue.main.async {
+                    self.diaryCollectionView.reloadData()
+                }
+            }
         }
         locationManager.stopUpdatingLocation()
     }

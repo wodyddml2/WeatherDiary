@@ -62,11 +62,11 @@
 		636B266F28AA4785002F01EE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				636B267028AA4799002F01EE /* WeatherInfo.swift */,
 				639A72D228A643A300AAED19 /* Main.storyboard */,
 				639A72D028A643A300AAED19 /* ViewController.swift */,
 				636F54D928AA1BC300A2F28D /* MainPlusCollectionViewCell.swift */,
 				636F54C528A9FB5300A2F28D /* MainCollectionViewCell.swift */,
-				636B267028AA4799002F01EE /* WeatherInfo.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
