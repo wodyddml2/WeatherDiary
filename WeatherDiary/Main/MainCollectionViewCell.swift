@@ -7,14 +7,8 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mainDiaryDateLabel: UILabel!
     
     func setupUI() {
-        mainBackgroundView.layer.masksToBounds = true
-        mainBackgroundView.layer.cornerRadius = 10
+        mainBackgroundView.borderStyle()
         
-
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.7
-        self.layer.shadowRadius = 15
-        self.layer.shadowOffset = CGSize(width: 0, height: 10)
+        self.shadowStyle()
     }
 }

@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     var weatherInfo: WeatherInfo?
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -31,8 +31,13 @@ class ViewController: UIViewController {
         
         diaryCollectionView.collectionViewLayout = mainCollectionViewLayout()
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        currentTimeLabel.text = formatter.string(from: Date())
+        
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(currentTimeAction), userInfo: nil, repeats: true)
     }
+    
     @objc func currentTimeAction() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -97,11 +102,17 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if indexPath.item == 0 {
-//
-//        }
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            let plusSB = UIStoryboard(name: "Plus", bundle: nil)
+            guard let plusVC = plusSB.instantiateViewController(withIdentifier: PlusViewController.reuseableIdentifier) as? PlusViewController else { return }
+            
+            let plusNav = UINavigationController(rootViewController: plusVC)
+            plusNav.modalPresentationStyle = .fullScreen
+            
+            present(plusNav, animated: true)
+        }
+    }
  
 }
 

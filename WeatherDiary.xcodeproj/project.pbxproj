@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		636B267128AA4799002F01EE /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B267028AA4799002F01EE /* WeatherInfo.swift */; };
+		636B267628AA4BE5002F01EE /* PlusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B267528AA4BE5002F01EE /* PlusViewController.swift */; };
+		636B267828AA4D75002F01EE /* Plus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636B267728AA4D75002F01EE /* Plus.storyboard */; };
+		636B267B28AA5E13002F01EE /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B267A28AA5E13002F01EE /* UIView+Extension.swift */; };
 		636F54C628A9FB5300A2F28D /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F54C528A9FB5300A2F28D /* MainCollectionViewCell.swift */; };
 		636F54C928AA01FA00A2F28D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F54C828AA01FA00A2F28D /* APIManager.swift */; };
 		636F54CC28AA021000A2F28D /* Room No.703 OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 636F54CB28AA021000A2F28D /* Room No.703 OTF.otf */; };
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		636B267028AA4799002F01EE /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
+		636B267528AA4BE5002F01EE /* PlusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusViewController.swift; sourceTree = "<group>"; };
+		636B267728AA4D75002F01EE /* Plus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Plus.storyboard; sourceTree = "<group>"; };
+		636B267A28AA5E13002F01EE /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		636F54C528A9FB5300A2F28D /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		636F54C828AA01FA00A2F28D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		636F54CB28AA021000A2F28D /* Room No.703 OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Room No.703 OTF.otf"; sourceTree = "<group>"; };
@@ -69,6 +75,23 @@
 				636F54C528A9FB5300A2F28D /* MainCollectionViewCell.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		636B267228AA4BA2002F01EE /* Plus */ = {
+			isa = PBXGroup;
+			children = (
+				636B267728AA4D75002F01EE /* Plus.storyboard */,
+				636B267528AA4BE5002F01EE /* PlusViewController.swift */,
+			);
+			path = Plus;
+			sourceTree = "<group>";
+		};
+		636B267928AA5DFE002F01EE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				636B267A28AA5E13002F01EE /* UIView+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		636F54C728AA01E600A2F28D /* Resource */ = {
@@ -120,9 +143,11 @@
 				636F54C728AA01E600A2F28D /* Resource */,
 				636F54CD28AA068600A2F28D /* Protocol */,
 				639A72CC28A643A300AAED19 /* AppDelegate.swift */,
+				636B267928AA5DFE002F01EE /* Extension */,
 				639A72CE28A643A300AAED19 /* SceneDelegate.swift */,
 				636B266F28AA4785002F01EE /* Main */,
 				639A72D528A643A400AAED19 /* Assets.xcassets */,
+				636B267228AA4BA2002F01EE /* Plus */,
 				639A72D728A643A400AAED19 /* LaunchScreen.storyboard */,
 				639A72DA28A643A400AAED19 /* Info.plist */,
 			);
@@ -201,6 +226,7 @@
 				639A72D928A643A400AAED19 /* LaunchScreen.storyboard in Resources */,
 				639A72D628A643A400AAED19 /* Assets.xcassets in Resources */,
 				639A72D428A643A300AAED19 /* Main.storyboard in Resources */,
+				636B267828AA4D75002F01EE /* Plus.storyboard in Resources */,
 				636F54CC28AA021000A2F28D /* Room No.703 OTF.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,12 +238,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				636B267B28AA5E13002F01EE /* UIView+Extension.swift in Sources */,
 				636F54C928AA01FA00A2F28D /* APIManager.swift in Sources */,
 				636F54CF28AA069800A2F28D /* ReusrableProtocol.swift in Sources */,
 				639A72D128A643A300AAED19 /* ViewController.swift in Sources */,
 				639A72CD28A643A300AAED19 /* AppDelegate.swift in Sources */,
 				636F54C628A9FB5300A2F28D /* MainCollectionViewCell.swift in Sources */,
 				639A72E328A6478300AAED19 /* APIKey.swift in Sources */,
+				636B267628AA4BE5002F01EE /* PlusViewController.swift in Sources */,
 				636F54DA28AA1BC300A2F28D /* MainPlusCollectionViewCell.swift in Sources */,
 				639A72CF28A643A300AAED19 /* SceneDelegate.swift in Sources */,
 				636B267128AA4799002F01EE /* WeatherInfo.swift in Sources */,
