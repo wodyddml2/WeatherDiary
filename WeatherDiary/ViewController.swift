@@ -34,6 +34,8 @@ class ViewController: UIViewController {
         currentTimeBackgroundView.layer.cornerRadius = 10
         currentTimeLabel.font = .boldSystemFont(ofSize: 17)
         
+        diaryCollectionView.backgroundColor = .clear
+        
         // iOS15 UIButton
         if #available(iOS 15.0, *) {
             locationReloadButton.configuration = .configurationButtonStyle()
@@ -68,7 +70,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.reuseableIdentifier, for: indexPath) as? MainCollectionViewCell else { return UICollectionViewCell() }
-        cell.mainBackgroundView.backgroundColor = .blue
+       
         cell.mainBackgroundImageView.kf.setImage(with: URL(string: "http://openweathermap.org/img/wn/10d@2x.png"))
         
         cell.setupUI()

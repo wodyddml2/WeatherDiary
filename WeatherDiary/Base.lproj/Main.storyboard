@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jEz-SB-8mO">
-                                <rect key="frame" x="0.0" y="223" width="414" height="639"/>
+                                <rect key="frame" x="0.0" y="178.5" width="414" height="683.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bQj-LD-SWv">
                                     <size key="itemSize" width="175" height="164"/>
@@ -38,10 +38,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="175" height="164"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ccY-Sl-gk2">
-                                                            <rect key="frame" x="0.0" y="0.0" width="175" height="164"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="175" height="143"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfT-4b-I1K">
-                                                            <rect key="frame" x="67" y="71.5" width="41.5" height="21"/>
+                                                            <rect key="frame" x="67" y="143" width="41.5" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -49,14 +49,14 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="NfT-4b-I1K" secondAttribute="bottom" id="4Ge-oq-vw4"/>
                                                         <constraint firstAttribute="trailing" secondItem="ccY-Sl-gk2" secondAttribute="trailing" id="4Tr-B2-hhx"/>
-                                                        <constraint firstItem="NfT-4b-I1K" firstAttribute="centerX" secondItem="GTV-OU-oyX" secondAttribute="centerX" id="NZf-g1-zCR"/>
-                                                        <constraint firstItem="NfT-4b-I1K" firstAttribute="centerY" secondItem="GTV-OU-oyX" secondAttribute="centerY" id="RcD-ic-RHB"/>
+                                                        <constraint firstItem="NfT-4b-I1K" firstAttribute="top" secondItem="ccY-Sl-gk2" secondAttribute="bottom" id="ECk-UO-aHS"/>
+                                                        <constraint firstItem="NfT-4b-I1K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GTV-OU-oyX" secondAttribute="leading" constant="8" id="R7j-br-fzB"/>
                                                         <constraint firstItem="ccY-Sl-gk2" firstAttribute="leading" secondItem="GTV-OU-oyX" secondAttribute="leading" id="Rnj-pQ-rzQ"/>
                                                         <constraint firstItem="ccY-Sl-gk2" firstAttribute="top" secondItem="GTV-OU-oyX" secondAttribute="top" id="T4B-ow-2Cn"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NfT-4b-I1K" secondAttribute="trailing" constant="8" id="qTc-pT-Nw0"/>
-                                                        <constraint firstItem="NfT-4b-I1K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GTV-OU-oyX" secondAttribute="leading" constant="8" id="ufd-DE-F8b"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ccY-Sl-gk2" secondAttribute="bottom" id="zuY-Cn-oNT"/>
+                                                        <constraint firstItem="NfT-4b-I1K" firstAttribute="centerX" secondItem="ccY-Sl-gk2" secondAttribute="centerX" id="YE0-uI-nLW"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NfT-4b-I1K" secondAttribute="trailing" constant="8" id="uqd-Ac-09M"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -77,10 +77,10 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMa-Pg-iqz">
-                                <rect key="frame" x="0.0" y="44" width="414" height="179"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="134.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0o-F6-3BL">
-                                        <rect key="frame" x="362" y="135.5" width="36" height="35.5"/>
+                                        <rect key="frame" x="371" y="99.5" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="m0o-F6-3BL" secondAttribute="height" id="gPj-iK-kLg"/>
                                         </constraints>
@@ -132,7 +132,7 @@
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
                             <constraint firstItem="JMa-Pg-iqz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6wG-um-gsl"/>
-                            <constraint firstItem="JMa-Pg-iqz" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.2" id="EpX-nd-TLN"/>
+                            <constraint firstItem="JMa-Pg-iqz" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.15" id="EpX-nd-TLN"/>
                             <constraint firstItem="jEz-SB-8mO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HaC-kh-r8q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jEz-SB-8mO" secondAttribute="trailing" id="IiO-eJ-QmJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jEz-SB-8mO" secondAttribute="bottom" id="NPT-4B-NFn"/>
