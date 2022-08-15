@@ -82,11 +82,18 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.reuseableIdentifier, for: indexPath) as? MainCollectionViewCell else { return UICollectionViewCell() }
-       
-        cell.mainBackgroundImageView.kf.setImage(with: URL(string: "http://openweathermap.org/img/wn/10d@2x.png"))
+        guard let plusCell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPlusCollectionViewCell.reuseableIdentifier, for: indexPath) as? MainPlusCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.setupUI()
-        return cell
+        if indexPath.item == 0 {
+            plusCell.setupUI()
+            return plusCell
+        } else {
+            cell.mainBackgroundImageView.kf.setImage(with: URL(string: "http://openweathermap.org/img/wn/10d@2x.png"))
+            
+            cell.setupUI()
+            return cell
+        }
+  
     }
  
 }
