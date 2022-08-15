@@ -23,6 +23,13 @@ class ViewController: UIViewController {
         setupUI()
         
         diaryCollectionView.collectionViewLayout = mainCollectionViewLayout()
+        
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(currentTimeAction), userInfo: nil, repeats: true)
+    }
+    @objc func currentTimeAction() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        currentTimeLabel.text = formatter.string(from: Date())
     }
     
     func setupUI() {
