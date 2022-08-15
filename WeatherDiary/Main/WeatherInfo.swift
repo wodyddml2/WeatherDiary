@@ -2,8 +2,8 @@ import Foundation
 
 struct WeatherInfo {
     let icon: String
-    let temp: Double
+    let temp: String
     let humidity: Int
-    let windSpeed: Double
+    let windSpeed: String
     let description: String
 }

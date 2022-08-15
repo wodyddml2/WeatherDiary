@@ -107,6 +107,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             let plusSB = UIStoryboard(name: "Plus", bundle: nil)
             guard let plusVC = plusSB.instantiateViewController(withIdentifier: PlusViewController.reuseableIdentifier) as? PlusViewController else { return }
             
+            plusVC.weatherInfo = weatherInfo
+            
             let plusNav = UINavigationController(rootViewController: plusVC)
             plusNav.modalPresentationStyle = .fullScreen
             

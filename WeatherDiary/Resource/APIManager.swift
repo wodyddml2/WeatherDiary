@@ -19,9 +19,9 @@ class RequestAPIManager {
                 
                 let weatherInfo = WeatherInfo(
                     icon: json["weather"][0]["icon"].stringValue,
-                    temp: (json["main"]["temp"].doubleValue - 273.15),
+                    temp: String(format: "%.1f", json["main"]["temp"].doubleValue - 273.15),
                     humidity: json["main"]["humidity"].intValue,
-                    windSpeed: json["wind"]["speed"].doubleValue,
+                    windSpeed: String(format: "%.1f", json["wind"]["speed"].doubleValue), 
                     description: json["weather"][0]["description"].stringValue)
                 
                 completionHandler(weatherInfo)

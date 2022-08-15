@@ -1,4 +1,7 @@
 import UIKit
+import PhotosUI
+
+import Kingfisher
 
 class PlusViewController: UIViewController {
     
@@ -17,8 +20,11 @@ class PlusViewController: UIViewController {
     
     @IBOutlet weak var diarySaveButton: UIButton!
     
+    var weatherInfo: WeatherInfo?
     
     let picker = UIImagePickerController()
+    
+    var configuration = PHPickerConfiguration()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +39,16 @@ class PlusViewController: UIViewController {
         weatherInfoBackgroundView.borderStyle()
         weatherInfoBackgroundView.backgroundColor = .clear
         weatherInfoLabel.font = .boldSystemFont(ofSize: 18)
-        weatherInfoLabel.text = "온도: \(20)°C  습도: \(40)  풍속: \(3)m/s"
+        weatherInfoLabel.text = "온도: \(weatherInfo?.temp ?? "0")°C  습도: \(weatherInfo?.humidity ?? 0)  풍속: \(weatherInfo?.windSpeed ?? "0")m/s"
+        weatherDescriptionLabel.font = .boldSystemFont(ofSize: 15)
+        weatherDescriptionLabel.text = weatherInfo?.description ?? ""
         
         pickerImageView.borderStyle()
+        pickerImageView.contentMode = .scaleAspectFill
         pickerBackgroundView.shadowStyle()
         pickerBackgroundView.backgroundColor = .clear
         
+        weatherIconImageView.kf.setImage(with: URL(string: "\(EndPoint.openWeatherIconURL)\(weatherInfo?.icon ?? "10n")@2x.png"))
         weatherIconImageView.borderStyle()
         weatherIconBackgroundView.shadowStyle()
         weatherIconBackgroundView.backgroundColor = .clear
@@ -67,10 +77,24 @@ class PlusViewController: UIViewController {
     
     
     @objc func cameraButtonClicked() {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("no")
+            return
+        }
+        picker.sourceType = .camera
+        picker.allowsEditing = true
         
+        present(picker, animated: true)
     }
     @objc func galleryButtonClicked() {
+        configuration.selectionLimit = 0
+        configuration.filter = .images
         
+        let phPicker = PHPickerViewController(configuration: configuration)
+        
+        phPicker.delegate = self
+        
+        present(phPicker, animated: true)
     }
     @objc func leftButtonClicked() {
         dismiss(animated: true)
@@ -79,5 +103,31 @@ class PlusViewController: UIViewController {
 }
 
 extension PlusViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.pickerImageView.image = image
+            dismiss(animated: true)
+        }
+    }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+}
+
+extension PlusViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        dismiss(animated: true)
+        
+        let itemProvider = results.first?.itemProvider
+        
+        if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                DispatchQueue.main.async {
+                    self.pickerImageView.image = image as? UIImage
+                }
+            }
+        }
+    }
+
 }
